@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户中心</title>
+    <link rel="stylesheet" href="css/user_comm.css">
+    <style>
+        #box {
+            width: 360px;
+            margin: auto;
+            font-size: 20px;
+            text-align: center;
+        }
+        label {
+            width: 90px;
+        }
+        form {
+            width: 360px;
+        }
+         #chang_passwd {
+            width: 120px;
+            display: block;
+            margin: auto;
+            background-color: #9bdfe5;
+            height: 34px;
+            font-size: 25px;
+        }
+    </style>
+    <script>
+        function check() {
+            var pass1 = document.getElementById("password").value;
+            var pass2 = document.getElementById("password_confirmation").value;
+            if (pass1 != pass2) {
+                alert("两次密码输入不一致！");
+                return false;
+            } else
+                return true;
+        }
+    </script>
+</head>
+
+<body>
+
+<form class="change" method="post" action="/servlet/ChangePasswd">
+    <ol>
+        <li>
+            <label for="password">密码</label>
+            <input id="password" type="password" name="password" value="" autocomplete="off"
+                   placeholder="8个字符及以上"
+                   pattern="^\w{8,20}$"
+                   title="请输入8到20位字符，包含字母、数字以及下划线" required/>
+        </li>
+        <li>
+            <label for="password_confirmation">确认密码</label>
+            <input id="password_confirmation" type="password"
+                   name="password_confirmation" value="" autocomplete="off"
+                   placeholder="请再次输入您的密码" required/>
+        </li>
+        <li><input id="chang_passwd" value="修改密码" type="submit" onclick="return check()"></li>
+    </ol>
+</form>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <style>
+        label{  width:120px;  }
+        form{  width:400px;  }
+        #submit{  width:280px;  }
+    </style>
+    <link rel="stylesheet" href="css/user_comm.css">
+    <script src="js/user_comm.js"></script>
+</head>
+<body>
+<br>
+<br>
+<p>Register</p>
+<form class="login" method="post" action="/servlet/Register">
+
+    <fieldset id="personal_information">
+        <ol>
+            <li>
+                <label for="userID">userID</label>
+                <input type="text" name="userID" id="userID" autofocus required>
+            </li>
+
+            <li>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required/>
+            </li>
+
+            <li>
+                <label for="password">Password</label>
+                <input id="password" type="password" name="password" value="" autocomplete="off"
+                       placeholder="more than 8 characters" required
+                       pattern="^\w{8,20}$"
+                       title="more than 8 characters"/>
+            </li>
+            <li>
+                <label for="password_confirmation">Confirm Password</label>
+                <input id="password_confirmation" type="password"
+                       name="password_confirmation" value="" autocomplete="off"
+                       placeholder="Please type your password again" required/>
+            </li>
+            <li><a href="login.html">Already Registered?Login Here</a></li>
+            <li><input id="submit" value="Register" type="submit" onclick="return check()"></li>
+
+        </ol>
+    </fieldset>
+</form>
+<script>
+    PreUrl();
+    var arr=getRequest();
+    document.getElementById("email").value=arr[0];
+    document.getElementById("userID").value=arr[1];
+    function check() {
+        var pass1 = document.getElementById("password").value;
+        var pass2 = document.getElementById("password_confirmation").value;
+        if (pass1 != pass2) {
+            alert("Different passwords!");
+            return false;
+        } else
+            return true;
+    }
+</script>
+</body>
+</html>

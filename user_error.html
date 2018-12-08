@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LoginError</title>
+    <script src="js/user_comm.js"></script>
+    <script>
+        var arr = getRequest();
+        switch (parseInt(arr[2])) {
+            case 1:
+                alert("Wrong Password！");
+                break;
+            case 2:
+                alert("This user does not exist！");
+                break;
+            case 29:
+                alert("Logout Successfully");
+                window.location.href = "/index.jsp";
+
+                break;
+            case 10:
+                alert("Register Successful！\n" + "Go to Login");
+                break;
+            case 11:
+                alert("This email has been registered！\n" + "Go to Login");
+                break;
+            case 21:
+                alert("Need to Login first");
+                break;
+
+            default:
+                alert("Changed Successfully！");
+                window.history.back();
+        }
+        PreUrl();
+        window.location.href = "login.jsp?Email=" + arr[0];
+    </script>
+</head>
+<body>
+
+</body>
+</html>
